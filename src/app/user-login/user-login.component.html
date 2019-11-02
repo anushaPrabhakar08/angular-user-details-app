@@ -1,0 +1,28 @@
+<div fxLayout="row" fxFlex="100%" fxLayoutAlign="center" class="signup-container">
+
+        <div class="user-login-card">
+            <mat-card class="card-class">
+                <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxFlex="100" fxLayout="column">
+                    <h1>LOGIN</h1>
+                    <mat-form-field appearance="fill">
+                        <input type="text" matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <span *ngIf="email.errors.required">
+                                Username is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <input type="password" matInput placeholder="Password" formControlName="password">
+                        <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <span *ngIf="password.errors.required">
+                                Password is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <button type="submit" mat-raised-button [disabled]="!loginForm.valid" color="primary">Login</button>
+                    <a routerLink="/usersignup" mat-button>Signup</a>
+                </form>
+            </mat-card>
+        </div>
+    </div>

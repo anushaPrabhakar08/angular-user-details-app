@@ -1,0 +1,86 @@
+<div fxLayout="row" fxFlex="100%" fxLayoutAlign="center">
+
+    <div class="user-login-card">
+        <mat-card class="card-class">
+
+            <form class="example-form" #userform="ngForm" (ngSubmit)="onSignin(userform.value)">
+                <div>
+                    <h1>SIGNUP</h1>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput name="firstName" ngModel required>
+                            <mat-icon matSuffix>supervisor_account</mat-icon>
+                            <mat-hint>First Name</mat-hint>
+                            <mat-error *ngIf="hasError('firstName', 'required')">First Name is required</mat-error>
+                            <mat-error *ngIf="hasError('firstName', 'maxlength')">You have more than 60 characters
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput name="lastName" ngModel required>
+                            <mat-icon matSuffix>supervisor_account</mat-icon>
+                            <mat-hint>Last Name</mat-hint>
+                            <mat-error *ngIf="hasError('lastName', 'required')">Last Name is required</mat-error>
+                            <mat-error *ngIf="hasError('lastName', 'maxlength')">You have more than 60 characters
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput name="password" [type]="hide ? 'password' : 'text'" ngModel required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
+                                <mat-hint>Password </mat-hint>
+                                <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                                <mat-error *ngIf="hasError('password', 'maxlength')">You have more than 20 characters
+                                </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput name="email" ngModel required>
+                            <mat-icon matSuffix>email</mat-icon>
+                            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')"> Please enter a
+                                valid email address</mat-error>
+                            <mat-error *ngIf="email.hasError('required')">Email is required
+                            </mat-error>
+                            <mat-hint>Email</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <input matInput name="date" [matDatepicker]="picker" placeholder="Choose a date"
+                                (dateChange)="getDate($event,dateref)" #dateref ngModel>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="signin-btn-class">
+
+                        <button mat-flat-button color="primary" type="submit" [disabled]="!userform.valid">
+                            <mat-icon matSuffix>perm_identity</mat-icon>Sign In
+                        </button>
+                        <p>Existing user <a class="login-btn" routerLink="/userlogin">Login here</a> </p>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </mat-card>
+
+    </div>
+
+</div>

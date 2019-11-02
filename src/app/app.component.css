@@ -1,0 +1,17 @@
+.mat-toolbar{
+    background-color: #3f51b5;
+    color: #ddd !important;
+}
+
+.mat-tab-header, .mat-tab-nav-bar {
+    border-bottom: none !important;   
+  }
+
+.mat-tab-label, .mat-tab-link{
+    color: #fff;
+    opacity: 1;
+  }
+
+.body {
+  background-color: gray;
+}

@@ -1,0 +1,38 @@
+<div class="example-container">
+    <mat-toolbar>
+        <div fxLayout="row" fxFlex="100%" fxLayoutAlign="space-between">
+            <div fxLayoutAlign="center center">
+                <!-- <mat-icon class="icon-class" aria-hidden="false" aria-label="Example home icon">menu</mat-icon> -->
+                <button mat-icon-button (click)="snav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+
+            <div fxLayoutAlign="center center">
+                Welcome To {{userEmail}}
+            </div>
+
+            <nav mat-tab-nav-bar [backgroundColor]="background">
+                <a mat-tab-link [routerLink]="['/useraddmember', userid]">
+                    <mat-icon class="icon-class" aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+                </a>
+            </nav>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+                <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
+                <a mat-list-item [routerLink]="['/userdashboard', userCode,userEmail]">Family Members</a>
+                <a mat-list-item routerLink="/userinfo">User Info</a>
+                <a mat-list-item routerLink="/userlogin">Logout</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

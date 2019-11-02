@@ -1,0 +1,24 @@
+<div *ngIf= "data.isEdit">
+        <h1 mat-dialog-title>Row Action :: Update</h1>
+        <div mat-dialog-content>
+          <p>Update Name</p>
+          <mat-form-field>
+            <input matInput [(ngModel)]="data.name.firstName">
+            <!-- [(ngModel)]="data.name.firstName" -->
+          </mat-form-field>
+        </div>
+        <div mat-dialog-actions>         
+          <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+          <button mat-button (click)="onNoClick()" class="btn-cancel">Cancel</button>
+        </div>
+</div>
+
+<div *ngIf="!data.isEdit">
+    <h1 mat-dialog-title>Row Action :: Delete</h1>
+        <p>Sure to delete..?</p>
+        
+        <div mat-dialog-actions>         
+          <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Delete</button>
+          <button mat-button (click)="onNoClick()" class="btn-cancel">Cancel</button>
+        </div>
+</div>
